@@ -2,7 +2,8 @@
 
 // Suspects Array
 
-let mrGreen = {
+
+const suspectsArray = [{
   firstName: 'Jacob',
   lastName: 'Green',
   occupation: 'Entrepreneur',
@@ -10,8 +11,8 @@ let mrGreen = {
   description: 'He has a lot of connections',
   image: 'https://pbs.twimg.com/profile_images/506787499331428352/65jTv2uC.jpeg',
   color: 'green'
-};
-let drOrchid = {
+},
+{
   firstName: 'Doctor',
   lastName: 'Orchid',
   occupation: 'Scientist',
@@ -19,9 +20,9 @@ let drOrchid = {
   description: 'PhD in plant toxicology. Adopted daughter of Mr. Boddy',
   image: 'http://www.radiotimes.com/uploads/images/Original/111967.jpg',
   color: 'white'
-};
+},
 
-let profPlum = {
+{
   firstName: 'Victor',
   lastName: 'Plum',
   occupation: 'Designer',
@@ -29,9 +30,9 @@ let profPlum = {
   description: 'Billionaire video game designer',
   image: 'https://66.media.tumblr.com/ee7155882178f73b3781603f0908617c/tumblr_phhxc7EhPJ1w5fh03_540.jpg',
   color: 'purple'
-};
+},
 
-let missScarlet = {
+{
   firstName: 'Kasandra',
   lastName: 'Scarlet',
   occupation: 'Actor',
@@ -39,9 +40,9 @@ let missScarlet = {
   description: 'She is an A-list movie star with a dark past',
   image: 'https://www.radiotimes.com/uploads/images/Original/111967.jpg',
   color: 'red'
-};
+},
 
-let mrsPeacock = {
+{
   firstName: 'Eleanor',
   lastName: 'Peacock',
   occupation: 'Socialité',
@@ -49,9 +50,9 @@ let mrsPeacock = {
   description: 'She is from a wealthy family and uses her status and money to earn popularity',
   image: 'https://metrouk2.files.wordpress.com/2016/07/mrs-peacock.jpg',
   color: 'blue'
-};
+},
 
-let mrMustard = {
+{
   firstName: 'Jack',
   lastName: 'Mustard',
   occupation: 'Retired Football player',
@@ -59,11 +60,7 @@ let mrMustard = {
   description: 'He is a former football player who tries to get by on his former glory',
   image: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/07/04/08/unspecified-3.jpg',
   color: 'yellow'
-};
-
-
-const suspectsArray = [mrGreen, drOrchid, profPlum,
-missScarlet, mrsPeacock, mrMustard];
+}];
 
 // Rooms Array
 
@@ -185,24 +182,31 @@ bat, trophy, pistol];
 
 // ITERATION 2
 
-function selectRandom() {
-  
-}
+function selectRandom(array) {
+  let random = array[Math.floor( Math.random() * array.length)];
+  return random;
+};
+
+let myMystery = {};
 
 function pickMystery() {
-  let suspect = suspectsArray[Math.floor( Math.random() * suspectsArray.length)]
-  let weapon = weaponsArray[Math.floor( Math.random() * weaponsArray.length)]
-  let room = roomsArray[Math.floor( Math.random() * roomsArray.length )]
-  
-  return { suspect, weapon, room}
-}
-
+   let mysterySuspect = selectRandom(suspectsArray);
+   let mysteryWeapon = selectRandom(weaponsArray)
+   let mysteryRoom = selectRandom(roomsArray);
+   myMystery.suspect = mysterySuspect;
+   myMystery.weapon = mysteryWeapon;
+   myMystery.room = mysteryRoom;
+   return myMystery;
+  }
 
 // ITERATION 3
 
-function revealMystery() {}
+function revealMystery() {
+  return `${myMystery.suspect.firstName} ${myMystery.suspect.lastName} 
+  killed Mr. Boddy using the ${myMystery.weapon.name} in the ${myMystery.room.name}!`;
+}
 
-
+console.log(myMystery)
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
